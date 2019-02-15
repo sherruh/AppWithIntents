@@ -12,6 +12,7 @@
         android:id="@+id/textViewActivity2"
         android:textSize="35dp"
         android:textStyle="bold"
+        android:onClick="clickOnTextView"
         />
 
 </android.support.v7.widget.LinearLayoutCompat>

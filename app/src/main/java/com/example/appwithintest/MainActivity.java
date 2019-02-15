@@ -35,9 +35,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==RESULT_OK){
-            String tetx=data.getStringExtra("RESULT_TEXT");
-            Log.d("resultOfIntent","yes");
-            buttonIntent.setText(tetx);
+            String text=data.getStringExtra("RESULT_TEXT");
+            switch (text){
+                case "Clicked1":
+                    buttonIntent.setText(text);
+                    break;
+                case "Clicked2":
+                    buttonHideIntent.setText(text);
+                    break;
+            }
         }
     }
 
@@ -48,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         intent.setType("text/plain");
 
         if(intent.resolveActivity(getPackageManager())!=null){
-            startActivity(intent);
+            startActivityForResult(intent,1);
         }
     }
 }
