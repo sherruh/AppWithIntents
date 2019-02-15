@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppWithIntent</string>
+    <string name="click1">click1</string>
+    <string name="hideclick">hideClick</string>
+</resources>
