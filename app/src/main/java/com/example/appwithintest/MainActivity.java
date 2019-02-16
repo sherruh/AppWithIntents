@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 case "Clicked1":
                     buttonIntent.setText(text);
                     break;
-                case "Clicked2":
-                    buttonHideIntent.setText(text);
-                    break;
+                default:
+                    editText1.setText(text);
+                    buttonHideIntent.setText("HideClicked");
             }
         }
         if (resultCode==RESULT_CANCELED){

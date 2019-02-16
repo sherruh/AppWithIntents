@@ -12,6 +12,7 @@ import java.util.List;
 public class Activity3 extends AppCompatActivity {
 
     TextView textView;
+    String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +23,9 @@ public class Activity3 extends AppCompatActivity {
         Bundle bundle=intent.getExtras();
         String text=bundle.get(Intent.EXTRA_TEXT).toString();
         try{
-            String result=Double.toString(calculate(text));
-            textView.setText("Result of: " +text+" is: "+ result);
+            String calcResult=Double.toString(calculate(text));
+            result="Result of: " +text+" is: "+ calcResult;
+            textView.setText(result);
         }
         catch (Exception e){
             Intent intentException=new Intent();
@@ -69,7 +71,7 @@ public class Activity3 extends AppCompatActivity {
     public void clickOnTextView(View v){
         Intent intent=new Intent();
         intent.setType("text/plain");
-        intent.putExtra("RESULT_TEXT","Clicked2");
+        intent.putExtra("RESULT_TEXT",result);
         setResult(RESULT_OK,intent);
         finish();
     }
