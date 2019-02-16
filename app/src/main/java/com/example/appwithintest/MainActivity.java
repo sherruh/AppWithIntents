@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         editText1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                buttonIntent.setText("Click");
             }
 
             @Override
@@ -43,13 +44,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        editText1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText1.setText("");
+            }
+        });
 
         buttonIntent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,Activity2.class);
                 intent.setType("tetx/plain");
-                intent.putExtra("TEXT_FROM_MAIN","Text from main Activity");
+                intent.putExtra("TEXT_FROM_MAIN","EditText1: "+textFromEditText1);
                 startActivityForResult(intent,1);
             }
         });
