@@ -42,6 +42,7 @@ public class Activity3 extends AppCompatActivity {
         operators.add("*");
         operators.add("+");
         operators.add("-");
+        operators.add("×");
         int indexOfoperator=0;
         for(String s:operators){
             if (text.contains(s)){
@@ -56,6 +57,9 @@ public class Activity3 extends AppCompatActivity {
                 result=arg1/arg2;
                 break;
             case '*':
+                result=arg1*arg2;
+                break;
+            case '×':
                 result=arg1*arg2;
                 break;
             case '+':
