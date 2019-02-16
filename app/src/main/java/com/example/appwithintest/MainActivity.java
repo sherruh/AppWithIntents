@@ -4,14 +4,19 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
     Button buttonIntent;
     Button buttonHideIntent;
+    EditText editText1;
+    String textFromEditText1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         buttonIntent=findViewById(R.id.buttonIntent);
         buttonHideIntent=findViewById(R.id.buttonHideIntent);
+        editText1=findViewById(R.id.editext1);
+
+
+        editText1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                textFromEditText1=editText1.getText().toString();
+            }
+        });
+
 
         buttonIntent.setOnClickListener(new View.OnClickListener() {
             @Override
