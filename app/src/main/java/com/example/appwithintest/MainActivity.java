@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 buttonIntent.setText("Click");
+                buttonHideIntent.setText("hideClick");
             }
 
             @Override
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     public void onHideClick(View v){
         Intent intent=new Intent();
         intent.setAction(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT,"Hide Intent text");
+        intent.putExtra(Intent.EXTRA_TEXT,textFromEditText1);
         intent.setType("text/plain");
 
         if(intent.resolveActivity(getPackageManager())!=null){
