@@ -21,8 +21,17 @@ public class Activity3 extends AppCompatActivity {
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         String text=bundle.get(Intent.EXTRA_TEXT).toString();
-        String result=Double.toString(calculate(text));
-        textView.setText(result);
+        try{
+            String result=Double.toString(calculate(text));
+            textView.setText("Result of: " +text+" is: "+ result);
+        }
+        catch (Exception e){
+            Intent intentException=new Intent();
+            intentException.setType("text/plain");
+            intentException.putExtra("RESULT_TEXT","Wrong data in editText!");
+            setResult(RESULT_CANCELED,intentException);
+            finish();
+        }
     }
 
     private double calculate(String text) {
@@ -37,9 +46,24 @@ public class Activity3 extends AppCompatActivity {
                 indexOfoperator=text.indexOf(s);
             }
         }
-
         double arg1=Double.parseDouble(text.substring(0,indexOfoperator));
-        return arg1;
+        double arg2=Double.parseDouble(text.substring(indexOfoperator+1,text.length()));
+        double result=0;
+        switch (text.charAt(indexOfoperator)){
+            case '/':
+                result=arg1/arg2;
+                break;
+            case '*':
+                result=arg1*arg2;
+                break;
+            case '+':
+                result=arg1+arg2;
+                break;
+            case '-':
+                result=arg1-arg2;
+                break;
+        }
+        return result;
     }
 
     public void clickOnTextView(View v){

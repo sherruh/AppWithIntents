@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
+        if (resultCode==RESULT_CANCELED){
+            String text=data.getStringExtra("RESULT_TEXT");
+            editText1.setText(text);
+        }
     }
 
     public void onHideClick(View v){
